@@ -1,0 +1,45 @@
+name: Java Secret Key Scanner CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        
+    - name: Build with Maven
+      run: mvn clean package -DskipTests
+      
+    - name: Run Security Scan
+      run: |
+        java -jar target/java-secret-key-scanner-1.0.0.jar \
+          -p . \
+          --project-name "${{ github.repository }}" \
+          -f all \
+          -o security-report
+          
+    - name: Upload JSON Report
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: security-report-json
+        path: security-report.json
+        
+    - name: Upload HTML Report
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: security-report-html
+        path: security-report.html
