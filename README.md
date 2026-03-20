@@ -1,6 +1,8 @@
-# Java Secret Key Scanner
+# 🛡️ Java Secret Key Scanner
 
 🛡️ Java敏感词代码审计工具 - 自动检测代码中的硬编码密钥、密码、API密钥等敏感信息
+
+**GitHub**: https://github.com/zpf7029/java-secret-key-scanner
 
 ## 功能特点
 

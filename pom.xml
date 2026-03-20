@@ -10,7 +10,8 @@
     <packaging>jar</packaging>
 
     <name>Java Secret Key Scanner</name>
-    <description>Java代码敏感词/密钥审计工具 - 检测代码中的硬编码密钥、密码、API密钥等敏感信息</description>
+    <description>Java代码敏感词/密钥审计工具 - 自动检测代码中的硬编码密钥、密码、API密钥等敏感信息</description></invoke>
+</minimax:tool_call>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
